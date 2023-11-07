@@ -17,12 +17,12 @@
 package com.example.android.immersivemode
 
 import android.os.Bundle
-import android.view.WindowInsets
 import android.view.WindowInsetsController
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowInsetsCompat
 
 /**
  *在状态栏后绘制（如果对您的内容和布局有意义，例如在全宽图像下）。为此，请使用 AppBarLayout 等 API，该 API 定义了固定在屏幕顶部的应用栏。
@@ -59,19 +59,19 @@ enum class TypeOption(
     // Both the status bar and the navigation bar
     SystemBars(
         "systemBars()",
-        WindowInsets.Type.systemBars()
+        WindowInsetsCompat.Type.systemBars()
     ),
 
     // The status bar only.
     StatusBar(
         "statusBars()",
-        WindowInsets.Type.statusBars()
+        WindowInsetsCompat.Type.statusBars()
     ),
 
     // The navigation bar only
     NavigationBar(
         "navigationBars()",
-        WindowInsets.Type.navigationBars()
+        WindowInsetsCompat.Type.navigationBars()
     )
 }
 
