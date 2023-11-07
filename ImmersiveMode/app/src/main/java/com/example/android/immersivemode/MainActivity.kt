@@ -25,6 +25,10 @@ import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 
 /**
+ *在状态栏后绘制（如果对您的内容和布局有意义，例如在全宽图像下）。为此，请使用 AppBarLayout 等 API，该 API 定义了固定在屏幕顶部的应用栏。
+ *
+ * https://developer.android.com/develop/ui/views/layout/edge-to-edge?hl=zh-cn
+ *
  * Behaviors of immersive mode.
  */
 enum class BehaviorOption(
@@ -37,6 +41,7 @@ enum class BehaviorOption(
         "BEHAVIOR_DEFAULT",
         WindowInsetsController.BEHAVIOR_DEFAULT
     ),
+
     // "Sticky immersive mode". Swipe from the edge to temporarily reveal the hidden bar.
     ShowTransientBarsBySwipe(
         "BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE",
@@ -56,11 +61,13 @@ enum class TypeOption(
         "systemBars()",
         WindowInsets.Type.systemBars()
     ),
+
     // The status bar only.
     StatusBar(
         "statusBars()",
         WindowInsets.Type.statusBars()
     ),
+
     // The navigation bar only
     NavigationBar(
         "navigationBars()",
@@ -97,6 +104,9 @@ class MainActivity : AppCompatActivity() {
         showButton.setOnClickListener { controlWindowInsets(false) }
     }
 
+    /**
+     * 这个存在笨笨的问题是，不是androidx的代码，是android的代码
+     */
     private fun controlWindowInsets(hide: Boolean) {
         // WindowInsetsController can hide or show specified system bars.
         val insetsController = window.decorView.windowInsetsController ?: return
